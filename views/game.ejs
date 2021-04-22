@@ -125,7 +125,8 @@
 
       <div class="row mt-5 text-center">
         <div class="col-sm-2 team-logos">
-          <img src="https://www.mlbstatic.com/team-logos/142.svg" alt="" />
+          <img src=<%= game.home ? `/images/${game.vs}.png` : "/images/HSNU.png"
+          %> alt="" />
         </div>
         <div class="col-sm-8 mt-sm-0 mt-3">
           <h3><%= game.title %></h3>
@@ -175,7 +176,8 @@
           </table>
         </div>
         <div class="col-sm-2 team-logos">
-          <img src="https://www.mlbstatic.com/team-logos/118.svg" alt="" />
+          <img src=<%= game.home ? "/images/HSNU.png" : `/images/${game.vs}.png`
+          %> alt="" />
         </div>
       </div>
 
