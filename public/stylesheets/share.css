@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/earlyaccess/notosanstc.css");
+body { font-family: 'Noto Sans TC'!important;}
+
+footer{
+    background-color: deepskyblue;
+    color: ghostwhite;
+}
+
+footer .icon{
+    font-size: xx-large;
+    color: white;
+}

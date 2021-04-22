@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
+      integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"
+      integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J"
+      crossorigin="anonymous"
+    ></script>
+    <link href="./Icons/css/all.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/share.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="#"
+        ><img
+          src="https://i2.wp.com/www.hs.ntnu.edu.tw/hsnuwp/wp-content/uploads/2010/10/%E9%99%84%E4%B8%AD%E6%A0%A1%E5%BE%BD_%E5%AE%98%E6%96%B9%E6%AD%A3%E5%BC%8F%E7%89%88_%E5%BD%A9%E8%89%B2%E5%8E%9F_png_96dpi1.png"
+          alt=""
+      /></a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="./"
+              >首頁<span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/new">新增數據</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input
+            required
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 class="text-center mt-3">編輯比賽數據</h1>
+      <form id="create_form">
+        <div class="form-group">
+          <label for="title">比賽名稱</label>
+          <input
+            required
+            type="text"
+            class="form-control"
+            id="title"
+            value="<%= game.title %> "
+          />
+        </div>
+        <div class="form-group">
+          <label for="date">比賽日期</label>
+          <input
+            required
+            type="date"
+            class="form-control"
+            id="date"
+            value="<%= game.date %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="home">主客場</label>
+          <select class="form-control" id="home">
+            <option value="true" <%= game.home ? "selected" : "" %> >主場</option>
+            <option value="false"  <%= !game.home ? "selected" : "" %> > 客場</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="enemy">對手</label>
+          <input
+            required
+            type="text"
+            class="form-control"
+            id="vs"
+            value="<%= game.vs %> "
+          />
+        </div>
+        <div class="form-group">
+          <label>BOX</label>
+          <table class="table table-responsive-lg">
+            <thead>
+              <tr>
+                <th scope="col">1</th>
+                <th scope="col">2</th>
+                <th scope="col">3</th>
+                <th scope="col">4</th>
+                <th scope="col">5</th>
+                <th scope="col">6</th>
+                <th scope="col">7</th>
+                <th scope="col">8</th>
+                <th scope="col">9</th>
+                <th scope="col"></th>
+                <th scope="col">E</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <input
+                    required
+                    type="number"
+                    min="0"
+                    class="form-control g_score"
+                    value="<%= game.guest_score[0] %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    required
+                    type="number"
+                    min="0"
+                    class="form-control g_score"
+                    value="<%= game.guest_score[1] %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    required
+                    type="number"
+                    min="0"
+                    class="form-control g_score"
+                    value="<%= game.guest_score[2] %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    required
+                    type="number"
+                    min="0"
+                    class="form-control g_score"
+                    value="<%= game.guest_score[3] %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    required
+                    type="number"
+                    min="0"
+                    class="form-control g_score"
+                    value="<%= game.guest_score[4] %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    required
+                    type="number"
+                    min="0"
+                    class="form-control g_score"
+                    value="<%= game.guest_score[5] %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    required
+                    type="number"
+                    min="0"
+                    class="form-control g_score"
+                    value="<%= game.guest_score[6] %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    required
+                    type="number"
+                    min="0"
+                    class="form-control g_score"
+                    value="<%= game.guest_score[7] %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    required
+                    type="number"
+                    min="0"
+                    class="form-control g_score"
+                    value="<%= game.guest_score[8] %>"
+                  />
+                </td>
+                <td></td>
+                <td>
+                  <input
+                    required
+                    type="number"
+                    min="0"
+                    id="guest_error"
+                    class="form-control"
+                    value="<%= game.guest_error %>"
+                  />
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <input
+                    required
+                    type="number"
+                    min="0"
+                    class="form-control h_score"
+                    value="<%= game.home_score[0] %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    required
+                    type="number"
+                    min="0"
+                    class="form-control h_score"
+                    value="<%= game.home_score[1] %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    required
+                    type="number"
+                    min="0"
+                    class="form-control h_score"
+                    value="<%= game.home_score[2] %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    required
+                    type="number"
+                    min="0"
+                    class="form-control h_score"
+                    value="<%= game.home_score[3] %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    required
+                    type="number"
+                    min="0"
+                    class="form-control h_score"
+                    value="<%= game.home_score[4] %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    required
+                    type="number"
+                    min="0"
+                    class="form-control h_score"
+                    value="<%= game.home_score[5] %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    required
+                    type="number"
+                    min="0"
+                    class="form-control h_score"
+                    value="<%= game.home_score[6] %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    required
+                    type="number"
+                    min="0"
+                    class="form-control h_score"
+                    value="<%= game.home_score[7] %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    required
+                    type="number"
+                    min="0"
+                    class="form-control h_score"
+                    value="<%= game.home_score[8] %>"
+                  />
+                </td>
+                <td></td>
+                <td>
+                  <input
+                    required
+                    type="number"
+                    min="0"
+                    id="home_error"
+                    class="form-control"
+                    value="<%= game.home_error %>"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="form-group">
+          <label
+            >打擊數據<button class="btn btn-primary" id="addBatterBtn">
+              新增
+            </button></label
+          >
+          <table
+            class="table table-hover text-center stat-table table-responsive-sm mt-3"
+          >
+            <thead>
+              <tr>
+                <th></th>
+                <th scope="col">#</th>
+                <th scope="col">打席數</th>
+                <th scope="col">打數</th>
+                <th scope="col">安打</th>
+                <th scope="col">打點</th>
+                <th scope="col">得分</th>
+                <th scope="col">三振</th>
+                <th scope="col">四死球</th>
+              </tr>
+            </thead>
+            <tbody id="batter_tbody">
+              <% for(const a of game.batters){ %>
+              <tr class="batters">
+                <th>
+                  <button type="button" class="btn btn-danger removeBtn">
+                    X
+                  </button>
+                </th>
+                <th>
+                  <input
+                    type="text"
+                    required=""
+                    min="0"
+                    class="form-control"
+                    value="<%= a.name %>"
+                  />
+                </th>
+                <td>
+                  <input
+                    type="number"
+                    required=""
+                    min="0"
+                    class="form-control"
+                    value="<%= a.PA %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    required=""
+                    min="0"
+                    class="form-control"
+                    value="<%= a.AB %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    required=""
+                    min="0"
+                    class="form-control"
+                    value="<%= a.H %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    required=""
+                    min="0"
+                    class="form-control"
+                    value="<%= a.RBI %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    required=""
+                    min="0"
+                    class="form-control"
+                    value="<%= a.R %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    required=""
+                    min="0"
+                    class="form-control"
+                    value="<%= a.SO %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    required=""
+                    min="0"
+                    class="form-control"
+                    value="<%= a.BB %>"
+                  />
+                </td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+        <div class="form-group">
+          <label
+            >投手數據<button class="btn btn-primary" id="addPitcherBtn">
+              新增
+            </button></label
+          >
+          <table
+            class="table table-hover text-center stat-table table-responsive-sm mt-3"
+          >
+            <thead>
+              <tr>
+                <th></th>
+                <th scope="col">#</th>
+                <th scope="col">局數</th>
+                <th scope="col">打席數</th>
+                <th scope="col">打數</th>
+                <th scope="col">安打</th>
+                <th scope="col">四死球</th>
+                <th scope="col">三振</th>
+                <th scope="col">失分</th>
+                <th scope="col">自責分</th>
+              </tr>
+            </thead>
+            <tbody id="pitcher_tbody">
+              <% for(const a of game.pitchers){ %>
+              <tr class="pitchers">
+                <th>
+                  <button type="button" class="btn btn-danger removeBtn">
+                    X
+                  </button>
+                </th>
+                <th>
+                  <input
+                    type="text"
+                    required=""
+                    min="0"
+                    class="form-control"
+                    value="<%= a.name %>"
+                  />
+                </th>
+                <td>
+                  <input
+                    type="number"
+                    required=""
+                    min="0"
+                    class="form-control"
+                    value="<%= a.I %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    required=""
+                    min="0"
+                    class="form-control"
+                    value="<%= a.PA %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    required=""
+                    min="0"
+                    class="form-control"
+                    value="<%= a.AB %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    required=""
+                    min="0"
+                    class="form-control"
+                    value="<%= a.H %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    required=""
+                    min="0"
+                    class="form-control"
+                    value="<%= a.BB %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    required=""
+                    min="0"
+                    class="form-control"
+                    value="<%= a.SO %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    required=""
+                    min="0"
+                    class="form-control"
+                    value="<%= a.R %>"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    required=""
+                    min="0"
+                    class="form-control"
+                    value="<%= a.ER %>"
+                  />
+                </td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="form-group">
+          <label for="photo">照片</label>
+          <input type="url" class="form-control photo mb-2" />
+          <input type="url" class="form-control photo mb-2" />
+          <input type="url" class="form-control photo mb-2" />
+          <input type="url" class="form-control photo mb-2" />
+          <input type="url" class="form-control photo mb-2" />
+        </div>
+
+        <button id="submit" type="submit" class="btn btn-primary">
+          Submit
+        </button>
+      </form>
+    </div>
+
+    <footer class="text-center py-3 mt-5">
+      <p>2020師大附中棒球社</p>
+      <a href="https://www.facebook.com/hsnubbt"
+        ><i class="fab fa-facebook icon mx-1"></i
+      ></a>
+      <a href="https://www.instagram.com/hsnubbc_506/"
+        ><i class="fab fa-instagram icon mx-1"></i
+      ></a>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/javascripts/edit.js"></script>
+  </body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>師大附中棒球社</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
+      integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"
+      integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J"
+      crossorigin="anonymous"
+    ></script>
+    <link href="./Icons/css/all.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/share.css" />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="#"
+        ><img
+          src="https://i2.wp.com/www.hs.ntnu.edu.tw/hsnuwp/wp-content/uploads/2010/10/%E9%99%84%E4%B8%AD%E6%A0%A1%E5%BE%BD_%E5%AE%98%E6%96%B9%E6%AD%A3%E5%BC%8F%E7%89%88_%E5%BD%A9%E8%89%B2%E5%8E%9F_png_96dpi1.png"
+          alt=""
+      /></a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="./index.html"
+              >首頁<span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./new">新增數據</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+    </nav>
+    <div class="container">
+      <h1 class="text-center mt-2">師大附中棒球社比賽紀錄</h1>
+      <table
+        class="table table-hover table-striped text-center stat-table table-responsive mt-3"
+      >
+        <thead>
+          <tr class="no-border-bottom">
+            <th></th>
+            <th scope="col" colspan="8" class="border-row">投手數據</th>
+            <th scope="col" colspan="9">打擊數據</th>
+          </tr>
+          <tr class="no-border-top">
+            <th scope="col">#</th>
+            <th scope="col">局數</th>
+            <th scope="col">打席數</th>
+            <th scope="col">打數</th>
+            <th scope="col">安打</th>
+            <th scope="col">四死球</th>
+            <th scope="col">三振</th>
+            <th>失分</th>
+            <th scope="col" class="border-row">自責分</th>
+            <th scope="col">打席數</th>
+            <th scope="col">打數</th>
+            <th scope="col">安打</th>
+            <th scope="col">打點</th>
+            <th scope="col">得分</th>
+            <th scope="col">三振</th>
+            <th scope="col">四死球</th>
+            <th scope="col">打擊率</th>
+            <th scope="col">上壘率</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (const g of games){ %>
+          <tr class="link" data-title=<%= g.title %>
+            >
+            <th scope="row"><%= g.title %></th>
+            <td><%= g.P_I %></td>
+            <td><%= g.P_PA %></td>
+            <td><%= g.P_AB %></td>
+            <td><%= g.P_H %></td>
+            <td><%= g.P_BB %></td>
+            <td><%= g.P_SO %></td>
+            <td><%= g.P_R %></td>
+            <td class="border-row"><%= g.P_ER %></td>
+            <td><%= g.B_PA %></td>
+            <td><%= g.B_AB %></td>
+            <td><%= g.B_H %></td>
+            <td><%= g.B_R %></td>
+            <td><%= g.B_RBI %></td>
+            <td><%= g.B_SO %></td>
+            <td><%= g.B_BB %></td>
+            <td><%= g.AVG %></td>
+            <td><%= g.OBP %></td>
+          </tr>
+          <% } %>
+          <tr>
+            <th scope="row">total</th>
+            <td><%= total.I %></td>
+            <td><%= total.PA %></td>
+            <td><%= total.AB %></td>
+            <td><%= total.H %></td>
+            <td><%= total.BB %></td>
+            <td><%= total.SO %></td>
+            <td><%= total.R %></td>
+            <td class="border-row"><%= total.ER %></td>
+            <td><%= total.BPA %></td>
+            <td><%= total.BAB %></td>
+            <td><%= total.BH %></td>
+            <td><%= total.BR %></td>
+            <td><%= total.BRBI %></td>
+            <td><%= total.BSO %></td>
+            <td><%= total.BBB %></td>
+            <td><%= total.AVG %></td>
+            <td><%= total.OBP %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <footer class="text-center py-3 mt-5">
+      <p>2020師大附中棒球社</p>
+      <a href="https://www.facebook.com/hsnubbt"
+        ><i class="fab fa-facebook icon mx-1"></i
+      ></a>
+      <a href="https://www.instagram.com/hsnubbc_506/"
+        ><i class="fab fa-instagram icon mx-1"></i
+      ></a>
+    </footer>
+
+    <script src="/javascripts/script.js"></script>
+  </body>
+</html>
