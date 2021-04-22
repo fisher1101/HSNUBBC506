@@ -1,12 +1,9 @@
 const mongoose = require("mongoose")
-if (process.env.NODE_ENV === "production") {
-  mongoose.connect(
-    "mongodb+srv://hsnubbc506:hsnubbc506@cluster0.ykmvh.mongodb.net/hsnubbc506?retryWrites=true&w=majority",
-    { useNewUrlParser: true }
-  )
-} else {
-  mongoose.connect("mongodb://localhost/test", { useNewUrlParser: true })
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config()
 }
+
+mongoose.connect(process.env.DB_URL, { useNewUrlParser: true })
 
 const db = mongoose.connection
 db.on("error", console.error.bind(console, "connection error:"))
