@@ -37,6 +37,15 @@ document.getElementById("submit").addEventListener("click", function (e) {
     return
   }
 
+  let photoes = []
+  for (const e of document
+    .getElementById("photo-url")
+    .getElementsByTagName("input")) {
+    if (e.value !== "") {
+      photoes.push(e.value)
+    }
+  }
+
   let data = {
     title: document.getElementById("title").value,
     date: document.getElementById("date").value,
@@ -48,7 +57,9 @@ document.getElementById("submit").addEventListener("click", function (e) {
     guest_score: getScore("g_score"),
     batters: getData("batters"),
     pitchers: getData("pitchers"),
+    photo_url: photoes,
   }
+
   console.log(data)
   axios
     .post("/api/game", data)
