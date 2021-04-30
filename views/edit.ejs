@@ -126,13 +126,10 @@
         </div>
         <div class="form-group">
           <label for="enemy">對手</label>
-          <input
-            required
-            type="text"
-            class="form-control"
-            id="vs"
-            value="<%= game.vs %> "
-          />
+          <select class="form-control" id="vs">
+            <option value="建國中學">建國中學</option>
+            <option value="松山高中">松山高中</option>
+          </select>
         </div>
         <div class="form-group">
           <label>BOX</label>
@@ -347,7 +344,7 @@
         </div>
         <div class="form-group">
           <label
-            >打擊數據<button class="btn btn-primary" id="addBatterBtn">
+            >打擊數據<button class="btn btn-primary ml-3" id="addBatterBtn">
               新增
             </button></label
           >
@@ -454,7 +451,7 @@
         </div>
         <div class="form-group">
           <label
-            >投手數據<button class="btn btn-primary" id="addPitcherBtn">
+            >投手數據<button class="btn btn-primary ml-3" id="addPitcherBtn">
               新增
             </button></label
           >
@@ -572,7 +569,8 @@
 
         <div class="form-group" id="photo-url">
           <label for="photo">照片</label>
-          <button class="btn btn-primary" id="addPhotoBtn">
+          
+          <button class="btn btn-primary ml-3" id="addPhotoBtn">
             新增
           </button>
           <% for(const e of game.photo_url) { %>

@@ -45,27 +45,56 @@ function getScore(classname) {
   return score
 }
 
+// function getData(classname) {
+//   let data = []
+//   for (const e of document.getElementsByClassName(classname)) {
+//     const player = {
+//       name: e.children[1].firstElementChild.value,
+//       PA: parseInt(e.children[2].firstElementChild.value),
+//       AB: parseInt(e.children[3].firstElementChild.value),
+//       H: parseInt(e.children[4].firstElementChild.value),
+//       R: parseInt(e.children[6].firstElementChild.value),
+//       SO: parseInt(e.children[7].firstElementChild.value),
+//       BB: parseInt(e.children[8].firstElementChild.value),
+//     }
+//     if (classname === "pitchers") {
+//       player.ER = parseInt(e.children[9].firstElementChild.value)
+//       player.I = parseInt(e.children[5].firstElementChild.value)
+//     } else {
+//       player.RBI = parseInt(e.children[5].firstElementChild.value)
+//     }
+//     data.push(player)
+//   }
+//   console.log(data)
+//   return data
+// }
+
 function getData(classname) {
   let data = []
   for (const e of document.getElementsByClassName(classname)) {
-    const player = {
-      name: e.children[1].firstElementChild.value,
-      PA: parseInt(e.children[2].firstElementChild.value),
-      AB: parseInt(e.children[3].firstElementChild.value),
-      H: parseInt(e.children[4].firstElementChild.value),
-      R: parseInt(e.children[6].firstElementChild.value),
-      SO: parseInt(e.children[7].firstElementChild.value),
-      BB: parseInt(e.children[8].firstElementChild.value),
-    }
-    if (classname === "pitchers") {
-      player.ER = parseInt(e.children[9].firstElementChild.value)
-      player.I = parseInt(e.children[5].firstElementChild.value)
-    } else {
+    const player = {}
+    if (classname === "batters") {
+      player.name = e.children[1].firstElementChild.value
+      player.PA = parseInt(e.children[2].firstElementChild.value)
+      player.AB = parseInt(e.children[3].firstElementChild.value)
+      player.H = parseInt(e.children[4].firstElementChild.value)
       player.RBI = parseInt(e.children[5].firstElementChild.value)
+      player.R = parseInt(e.children[6].firstElementChild.value)
+      player.SO = parseInt(e.children[7].firstElementChild.value)
+      player.BB = parseInt(e.children[8].firstElementChild.value)
+    } else {
+      player.name = e.children[1].firstElementChild.value
+      player.I = parseInt(e.children[2].firstElementChild.value)
+      player.PA = parseInt(e.children[3].firstElementChild.value)
+      player.AB = parseInt(e.children[4].firstElementChild.value)
+      player.H = parseInt(e.children[5].firstElementChild.value)
+      player.BB = parseInt(e.children[6].firstElementChild.value)
+      player.SO = parseInt(e.children[7].firstElementChild.value)
+      player.R = parseInt(e.children[8].firstElementChild.value)
+      player.ER = parseInt(e.children[9].firstElementChild.value)
     }
     data.push(player)
   }
-  console.log(data)
   return data
 }
 
