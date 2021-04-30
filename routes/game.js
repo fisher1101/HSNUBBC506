@@ -94,6 +94,7 @@ router.delete("/:title", (req, res, next) => {
 })
 
 router.put("/:title", (req, res, next) => {
+  console.log(req.body)
   const data = {}
   data["title"] = req.body.title
   data["date"] = new Date(req.body.date)

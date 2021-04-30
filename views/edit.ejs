@@ -103,7 +103,8 @@
             type="text"
             class="form-control"
             id="title"
-            value="<%= game.title %> "
+            value="<%= game.title %>"
+            disabled
           />
         </div>
         <div class="form-group">
@@ -569,13 +570,14 @@
           </table>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" id="photo-url">
           <label for="photo">照片</label>
-          <input type="url" class="form-control photo mb-2" />
-          <input type="url" class="form-control photo mb-2" />
-          <input type="url" class="form-control photo mb-2" />
-          <input type="url" class="form-control photo mb-2" />
-          <input type="url" class="form-control photo mb-2" />
+          <button class="btn btn-primary" id="addPhotoBtn">
+            新增
+          </button>
+          <% for(const e of game.photo_url) { %>
+            <input type="url" class="form-control photo mb-2" value="<%= e %> "/>
+            <% } %>  
         </div>
 
         <button id="submit" type="submit" class="btn btn-primary">

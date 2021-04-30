@@ -11,32 +11,26 @@ function getData(classname) {
   let data = []
   for (const e of document.getElementsByClassName(classname)) {
     const player = {
-      name: e.childNodes[0].firstChild.value,
-      PA: parseInt(e.childNodes[1].firstChild.value),
-      AB: parseInt(e.childNodes[2].firstChild.value),
-      H: parseInt(e.childNodes[3].firstChild.value),
-      R: parseInt(e.childNodes[5].firstChild.value),
-      SO: parseInt(e.childNodes[6].firstChild.value),
-      BB: parseInt(e.childNodes[7].firstChild.value),
+      name: e.children[0].firstElementChild.value,
+      PA: parseInt(e.children[1].firstElementChild.value),
+      AB: parseInt(e.children[2].firstElementChild.value),
+      H: parseInt(e.children[3].firstElementChild.value),
+      R: parseInt(e.children[5].firstElementChild.value),
+      SO: parseInt(e.children[6].firstElementChild.value),
+      BB: parseInt(e.children[7].firstElementChild.value),
     }
     if (classname === "pitchers") {
-      player.ER = parseInt(e.childNodes[8].firstChild.value)
-      player.I = parseInt(e.childNodes[4].firstChild.value)
+      player.ER = parseInt(e.children[8].firstChild.value)
+      player.I = parseInt(e.children[4].firstChild.value)
     } else {
-      player.RBI = parseInt(e.childNodes[4].firstChild.value)
+      player.RBI = parseInt(e.children[4].firstChild.value)
     }
     data.push(player)
   }
   return data
 }
 
-document.getElementById("submit").addEventListener("click", function (e) {
-  e.preventDefault()
-  if (document.getElementById("create_form").checkValidity() === false) {
-    alert("請輸入完整記錄")
-    return
-  }
-
+function getPhotoUrl() {
   let photoes = []
   for (const e of document
     .getElementById("photo-url")
@@ -44,6 +38,15 @@ document.getElementById("submit").addEventListener("click", function (e) {
     if (e.value !== "") {
       photoes.push(e.value)
     }
+  }
+  return photoes
+}
+
+document.getElementById("submit").addEventListener("click", function (e) {
+  e.preventDefault()
+  if (document.getElementById("create_form").checkValidity() === false) {
+    alert("請輸入完整記錄")
+    return
   }
 
   let data = {
@@ -57,7 +60,7 @@ document.getElementById("submit").addEventListener("click", function (e) {
     guest_score: getScore("g_score"),
     batters: getData("batters"),
     pitchers: getData("pitchers"),
-    photo_url: photoes,
+    photo_url: getPhotoUrl(),
   }
 
   console.log(data)

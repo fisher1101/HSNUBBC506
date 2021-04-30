@@ -301,42 +301,21 @@
             data-ride="carousel"
           >
             <ol class="carousel-indicators">
+              <% for( let i = 0; i < game.photo_url.length; i++) { %>
               <li
                 data-target="#carouselExampleIndicators"
-                data-slide-to="0"
-                class="active"
+                data-slide-to="<%= i  %> "
+                class="<%=  i === 0 ? "active" : "" %> "
               ></li>
-              <li
-                data-target="#carouselExampleIndicators"
-                data-slide-to="1"
-              ></li>
-              <li
-                data-target="#carouselExampleIndicators"
-                data-slide-to="2"
-              ></li>
+              <% } %>
             </ol>
+
             <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img
-                  src="https://picsum.photos/2048/1536?random=1"
-                  class="d-block w-100"
-                  alt="..."
-                />
+              <% for(let i =0; i<game.photo_url.length; i++){ %>
+              <div class="carousel-item <%= i === 0 ? "active" : " " %> ">
+                <img src="<%= game.photo_url[i] %>" class="d-block w-100" alt="..." />
               </div>
-              <div class="carousel-item">
-                <img
-                  src="https://picsum.photos/2048/1536?random=2"
-                  class="d-block w-100"
-                  alt="..."
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  src="https://picsum.photos/2048/1536?random=3"
-                  class="d-block w-100"
-                  alt="..."
-                />
-              </div>
+              <% } %>
             </div>
             <a
               class="carousel-control-prev"
