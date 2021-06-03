@@ -1,6 +1,6 @@
 # HSNUBBC506
 
-Baseball website.
+Baseball website!
 
 ## prepare
 
